@@ -1,8 +1,8 @@
 <template>
   <li>
     <input type="checkbox" v-model="item.completed">
-    <span v-bind:class="{disabled: item.completed}"><b>{{ index+1 }}</b> {{ item.title }}</span>
-    <button v-on:click="$emit('remove-item', item.id)">
+    <span :class="{disabled: item.completed}"><b>{{ index+1 }}</b> {{ item.title }}</span>
+    <button @click="$emit('remove-item', item.id)">
       &times;
     </button>
   </li>

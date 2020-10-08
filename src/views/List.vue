@@ -7,10 +7,11 @@
     <h4 v-if="loading">Loading...</h4>
     <ul v-else-if="listItems.length">
       <ListItem
-        v-for="(item, i) of listItems"
-        v-bind:item="item"
-        v-bind:index="i"
-        @remove-item="removeItem"
+        v-for="(item, i) of allItems"
+        :item="item"
+        :index="i"
+        :key="item.id"
+        @remove-item="deleteItem"
       />
     </ul>
     <h4 v-else>List is empty!</h4>
