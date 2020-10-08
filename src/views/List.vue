@@ -4,8 +4,8 @@
     <AddItem
       @on-submit="addItem"
     />
-    <h4 v-if="loading">Loading...</h4>
-    <ul v-else-if="listItems.length">
+    <h4 v-if="itemsLoading">Loading...</h4>
+    <ul v-else-if="allItems.length">
       <ListItem
         v-for="(item, i) of allItems"
         :item="item"
@@ -21,30 +21,22 @@
 <script>
 import ListItem from '@/components/ListItem';
 import AddItem from '@/components/AddItem';
+import {mapGetters, mapActions, mapMutations} from 'vuex';
 export default {
   name: 'List',
-  data() {
-    return {
-      listItems: [],
-      loading: true
-    };
-  },
+  computed: mapGetters(['allItems', 'itemsLoading']),
   components: {
     AddItem,
     ListItem
   },
   mounted() {
-    fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
-      .then((response) => response.json())
-      .then((data) => {this.listItems = data; this.loading = false})
+    this.fetchItems();
   },
   methods: {
-    removeItem(id) {
-      this.listItems = this.listItems.filter(item => item.id !== id)
-    },
-
+    ...mapActions(['fetchItems']),
+    ...mapMutations(['addNewItem', 'deleteItem']),
     addItem(title) {
-      this.listItems.push({id: Date.now(), title, completed: false})
+      this.addNewItem({id: Date.now(), title, completed: false})
     }
   }
 };
