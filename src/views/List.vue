@@ -21,24 +21,44 @@
 <script>
 import ListItem from '@/components/ListItem';
 import AddItem from '@/components/AddItem';
-import {mapGetters, mapActions, mapMutations} from 'vuex';
+
+import { ADD_NEW_ITEM, DELETE_ITEM } from '@/store/modules/items/mutations';
+import { createNamespacedHelpers } from 'vuex';
+import { FETCH_ITEMS } from '@/store/modules/items/actions';
+
+const { mapMutations, mapGetters, mapActions, mapState } = createNamespacedHelpers('items')
+
 export default {
   name: 'List',
-  computed: mapGetters(['allItems', 'itemsLoading']),
   components: {
     AddItem,
     ListItem
   },
+  computed: {
+    ...mapState({
+      allItems: state => state.items,
+      itemsLoading: state => state.itemsLoading
+    })
+  },
+  methods: {
+    ...mapActions({
+      fetchItems: FETCH_ITEMS
+    }),
+    ...mapMutations({
+      addNewItem: ADD_NEW_ITEM,
+      deleteItem: DELETE_ITEM
+    }),
+    addItem(title) {
+      this.addNewItem({
+        id: Date.now(),
+        title,
+        completed: false
+      });
+    }
+  },
   mounted() {
     this.fetchItems();
   },
-  methods: {
-    ...mapActions(['fetchItems']),
-    ...mapMutations(['addNewItem', 'deleteItem']),
-    addItem(title) {
-      this.addNewItem({id: Date.now(), title, completed: false})
-    }
-  }
 };
 </script>
 

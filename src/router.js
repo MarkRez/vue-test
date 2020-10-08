@@ -21,5 +21,16 @@ export default new Router({
       path: '/contacts',
       component: Contacts
     },
+
+    {
+      path: 'auth',
+      component: () => 'Auth.vue',
+      children: [
+        {
+          path: 'login',
+          component: () => 'Login.vue'
+        }
+      ]
+    }
   ]
 })
