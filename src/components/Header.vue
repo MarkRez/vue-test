@@ -6,8 +6,15 @@
     <router-link to="/">Home</router-link>
     <router-link to="/contacts">Contacts</router-link>
     <router-link to="/list">List</router-link>
+    <router-link class="login-link" to="/auth/login">Login</router-link>
   </header>
 </template>
+
+<script>
+export default {
+  name: 'Header',
+}
+</script>
 
 <style scoped>
 h2 {
@@ -20,8 +27,11 @@ header {
   padding: 15px 20px;
   display: flex;
   background-color: lightgray;
-  align-items: center;
   margin-bottom: 30px;
+}
+
+.login-link {
+  margin-left: auto;
 }
 
 a {
