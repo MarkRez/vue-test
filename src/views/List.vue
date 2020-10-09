@@ -22,11 +22,11 @@
 import ListItem from '@/components/ListItem';
 import AddItem from '@/components/AddItem';
 
-import { ADD_NEW_ITEM, DELETE_ITEM } from '@/store/modules/items/mutations';
+import { ADD_NEW_ITEM, DELETE_ITEM, RESET_STATE } from '@/store/modules/items/mutations';
 import { createNamespacedHelpers } from 'vuex';
 import { FETCH_ITEMS } from '@/store/modules/items/actions';
 
-const { mapMutations, mapGetters, mapActions, mapState } = createNamespacedHelpers('items')
+const { mapMutations, mapActions, mapState } = createNamespacedHelpers('items')
 
 export default {
   name: 'List',
@@ -42,11 +42,12 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchItems: FETCH_ITEMS
+      fetchItems: FETCH_ITEMS,
     }),
     ...mapMutations({
       addNewItem: ADD_NEW_ITEM,
-      deleteItem: DELETE_ITEM
+      deleteItem: DELETE_ITEM,
+      resetState: RESET_STATE
     }),
     addItem(title) {
       this.addNewItem({
@@ -58,6 +59,9 @@ export default {
   },
   mounted() {
     this.fetchItems();
+  },
+  destroyed() {
+    this.resetState();
   },
 };
 </script>

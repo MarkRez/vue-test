@@ -1,6 +1,6 @@
-import { SET_ITEMS, SET_LOADING } from '@/store/modules/items/mutations';
+import {SET_ITEMS, SET_LOADING } from '@/store/modules/items/mutations';
 
-export const FETCH_ITEMS = 'FETCH_ITEMS'
+export const FETCH_ITEMS = 'FETCH_ITEMS';
 
 export default {
   async [FETCH_ITEMS]({ commit }) {
