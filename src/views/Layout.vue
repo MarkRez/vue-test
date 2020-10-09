@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <Header/>
-    <div class="content">
+    <div class="container mx-auto">
       <transition name="slide">
         <router-view/>
       </transition>

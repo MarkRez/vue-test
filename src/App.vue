@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Header/>
     <router-view/>
   </div>
 </template>
@@ -39,15 +38,9 @@ header a {
   border-radius: 25px;
 }
 
-header .router-link-exact-active {
-  border: 1px solid #2b2b2b;
+nav .router-link-exact-active {
   background-color: white;
-  color: #2b2b2b;
-}
-
-.content {
-  padding-left: 40px;
-  width: 600px;
+  color: #38b2ac;
 }
 
 .el-main {
@@ -59,6 +52,6 @@ a {
 }
 
 *:focus {
-  outline: none;
+  outline: none!important;
 }
 </style>

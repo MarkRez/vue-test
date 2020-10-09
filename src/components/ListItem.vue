@@ -2,7 +2,7 @@
   <li>
     <input type="checkbox" v-model="item.completed">
     <span :class="{disabled: item.completed}"><b>{{ index+1 }}</b> {{ item.title }}</span>
-    <button @click="$emit('remove-item', item.id)">
+    <button class="" @click="$emit('remove-item', item.id)">
       &times;
     </button>
   </li>

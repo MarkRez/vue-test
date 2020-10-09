@@ -1,8 +1,10 @@
 <template>
   <div class="add-item">
     <form @submit.prevent="onSubmit">
-      <input type="text" v-model="title">
-      <button type="submit">Add</button>
+      <div class="flex justify-between">
+        <input class="w-full" type="text" v-model="title">
+        <button class="outline-none rounded-full bg-teal-400 text-white font-bold w-32" type="submit">Add</button>
+      </div>
     </form>
   </div>
 </template>
@@ -29,7 +31,6 @@ export default {
   margin-bottom: 20px;
 }
 input {
-  width: 397px;
   padding: 5px 14px;
   border-radius: 20px;
   border: 1px solid silver;
@@ -38,9 +39,7 @@ input {
 button {
   padding: 0.4rem 1rem;
   margin-left: 10px;
-  border-radius: 20px;
   border: 0;
-  background-color: deepskyblue;
   cursor: pointer;
 }
 </style>

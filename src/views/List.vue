@@ -1,20 +1,22 @@
 <template>
-  <div class="list-page">
-    <h2>List page</h2>
-    <AddItem
-      @on-submit="addItem"
-    />
-    <h4 v-if="itemsLoading">Loading...</h4>
-    <ul v-else-if="allItems.length">
-      <ListItem
-        v-for="(item, i) of allItems"
-        :item="item"
-        :index="i"
-        :key="item.id"
-        @remove-item="deleteItem"
+  <div class="list-page flex justify-center">
+    <div class="lg:w-6/12">
+      <h2 class="text-3xl font-bold mb-3">List page</h2>
+      <AddItem
+        @on-submit="addItem"
       />
-    </ul>
-    <h4 v-else>List is empty!</h4>
+      <h4 v-if="itemsLoading">Loading...</h4>
+      <ul v-else-if="allItems.length">
+        <ListItem
+          v-for="(item, i) of allItems"
+          :item="item"
+          :index="i"
+          :key="item.id"
+          @remove-item="deleteItem"
+        />
+      </ul>
+      <h4 v-else>List is empty!</h4>
+    </div>
   </div>
 </template>
 

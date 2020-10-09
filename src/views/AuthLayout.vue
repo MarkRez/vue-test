@@ -2,9 +2,9 @@
   <div class="auth-layout">
     <header>
       <h2>Auth vue</h2>
-      <router-link class="login-link" to="/">Main page</router-link>
+      <router-link class="ml-auto" to="/">Main page</router-link>
     </header>
-    <div class="content">
+    <div class="container mx-auto w-3/12">
       <router-view/>
     </div>
   </div>
